@@ -1,0 +1,402 @@
+/* 文章详情页样式文件 */
+
+/* 导入主页样式变量 */
+@import url('./main.css');
+
+/* 文章内容区域 */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 32px;
+    margin-top: 72px; /* 导航栏高度 */
+}
+
+/* 简化版文章内容区域 */
+.article-content-simple {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 32px;
+    margin-top: 32px;
+}
+
+/* 返回按钮样式 */
+.article-return {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.return-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 200ms linear;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.return-btn:hover {
+    background-color: #F8F9FA;
+    border-color: #141414;
+    color: #141414;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.return-icon {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 移动端返回按钮优化 */
+@media (max-width: 768px) {
+    .article-return {
+        top: 16px;
+        left: 16px;
+    }
+    
+    .return-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .return-icon {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-return {
+        top: 12px;
+        left: 12px;
+    }
+    
+    .return-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+        gap: 6px;
+    }
+}
+
+/* 文章头部 */
+.article-header {
+    text-align: center;
+    margin-bottom: 64px;
+    padding: 64px 0;
+    border-bottom: 1px solid #DEE2E6;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* 分类标签 */
+.category {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.category-programming {
+    background-color: #141414;
+}
+
+.category-reading {
+    background-color: #495057;
+}
+
+.category-essay {
+    background-color: #6C757D;
+}
+
+.publish-date {
+    font-size: 14px;
+    color: #495057;
+    margin: 0;
+}
+
+.article-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #141414;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.article-summary {
+    font-size: 18px;
+    color: #495057;
+    line-height: 1.6;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 文章正文 */
+.article-body {
+    padding-bottom: 64px;
+}
+
+.article-body h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #141414;
+    margin: 48px 0 24px 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #DEE2E6;
+}
+
+.article-body h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #141414;
+    margin: 32px 0 16px 0;
+}
+
+.article-body p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #141414;
+    margin-bottom: 24px;
+}
+
+.article-body ul, 
+.article-body ol {
+    margin: 24px 0;
+    padding-left: 32px;
+}
+
+.article-body li {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #141414;
+    margin-bottom: 12px;
+}
+
+.article-body strong {
+    font-weight: 600;
+    color: #141414;
+}
+
+.article-body em {
+    font-style: italic;
+    color: #495057;
+}
+
+/* 代码块 */
+.article-body pre {
+    background-color: #F8F9FA;
+    border: 1px solid #DEE2E6;
+    border-radius: 4px;
+    padding: 24px;
+    margin: 24px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #141414;
+}
+
+.article-body code {
+    font-family: 'Courier New', monospace;
+    background-color: #F8F9FA;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #D63384;
+}
+
+/* 引用块 */
+.article-body blockquote {
+    border-left: 4px solid #DEE2E6;
+    padding-left: 24px;
+    margin: 32px 0;
+    font-style: italic;
+    color: #495057;
+    background-color: #F8F9FA;
+    padding: 24px;
+    border-radius: 4px;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .article-content {
+        padding: 0 24px;
+    }
+    
+    .article-header {
+        padding: 48px 0;
+        margin-bottom: 48px;
+    }
+    
+    .article-title {
+        font-size: 32px;
+    }
+    
+    .article-summary {
+        font-size: 16px;
+    }
+    
+    .article-body h2 {
+        font-size: 24px;
+        margin: 32px 0 16px 0;
+    }
+    
+    .article-body h3 {
+        font-size: 20px;
+    }
+    
+    .article-body p {
+        font-size: 16px;
+    }
+    
+    .article-body li {
+        font-size: 16px;
+    }
+    
+    .article-meta {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .category {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+    
+    .publish-date {
+        font-size: 12px;
+    }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+    .article-content {
+        padding: 0 16px;
+    }
+    
+    .article-title {
+        font-size: 28px;
+    }
+    
+    .article-body pre {
+        padding: 16px;
+        font-size: 12px;
+    }
+    
+    .article-body {
+        padding-bottom: 48px;
+    }
+}
+
+/* 文章导航 */
+.article-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid #DEE2E6;
+}
+
+.article-nav a {
+    color: #495057;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 200ms linear;
+    max-width: 45%;
+}
+
+.article-nav a:hover {
+    color: #141414;
+}
+
+.article-nav a span {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #6C757D;
+}
+
+/* 分享按钮 */
+.share-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 48px 0;
+    padding: 24px;
+    background-color: #F8F9FA;
+    border-radius: 4px;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 200ms linear;
+}
+
+.share-btn:hover {
+    background-color: #141414;
+    color: #FFFFFF;
+    border-color: #141414;
+}
+
+/* 返回顶部按钮增强 */
+.article-content .back-to-top {
+    bottom: 48px;
+    right: 48px;
+}
+
+/* 简化版页面返回顶部按钮 */
+.article-content-simple .back-to-top {
+    bottom: 48px;
+    right: 48px;
+}
+
+/* 移动端文章导航 */
+@media (max-width: 768px) {
+    .article-nav {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .article-nav a {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .share-buttons {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .share-btn {
+        font-size: 12px;
+        padding: 10px 16px;
+    }
+}

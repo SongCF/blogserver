@@ -1,0 +1,19 @@
+<!-- 移动端优化配置 -->
+<!-- PWA支持文件 manifest.json -->
+{
+    "name": "haowanai.cn 个人博客",
+    "short_name": "haowanai博客",
+    "description": "一个简洁优雅的个人博客分享网站",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#141414",
+    "icons": [
+        {
+            "src": "imgs/blog_icon_2.jpg",
+            "sizes": "32x32",
+            "type": "image/jpeg"
+        }
+    ],
+    "categories": ["blog", "personal", "writing"]
+}

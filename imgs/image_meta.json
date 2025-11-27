@@ -1,0 +1,92 @@
+[
+  {
+    "query": "写文章/博客的图标，黑白极简风格",
+    "image_info": {
+      "url": "https://thumbs.dreamstime.com/b/article-icon-line-design-article-writing-content-journalism-text-blog-editorial-white-background-vector-article-article-icon-394167618.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 29509,
+      "width": 800,
+      "height": 800,
+      "total_pixels": 640000,
+      "basic_score": 0.8812643937844741,
+      "file_name": "blog_icon_5.jpg"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "写文章/博客的图标，黑白极简风格",
+    "image_info": {
+      "url": "https://thumbs.dreamstime.com/b/content-writing-icon-black-color-perfect-use-print-media-web-stock-images-commercial-any-kind-design-project-191074950.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 28576,
+      "width": 800,
+      "height": 800,
+      "total_pixels": 640000,
+      "basic_score": 0.8811583761766965,
+      "file_name": "blog_icon_7.jpg"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "写文章/博客的图标，黑白极简风格",
+    "image_info": {
+      "url": "https://thumbs.dreamstime.com/b/blog-icon-line-design-blog-blogging-blogger-post-article-content-writing-white-background-vector-blog-editable-stroke-icon-394218258.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 28242,
+      "width": 800,
+      "height": 800,
+      "total_pixels": 640000,
+      "basic_score": 0.881120406271528,
+      "file_name": "blog_icon_2.jpg"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "一个简约的博客头部图片，黑白灰风格，简洁设计",
+    "image_info": {
+      "url": "https://thumbs.dreamstime.com/b/elegant-white-to-black-gradient-background-minimalist-design-subtle-lines-soft-light-monochrome-clean-minimalistic-backdrop-326394651.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 32131,
+      "width": 800,
+      "height": 533,
+      "total_pixels": 426400,
+      "basic_score": 0.8275413415383602,
+      "file_name": "blog_header_1.jpg"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "一个简约的博客头部图片，黑白灰风格，简洁设计",
+    "image_info": {
+      "url": "https://thumbs.dreamstime.com/b/simple-gradient-background-minimalist-white-to-black-transition-351056445.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 12203,
+      "width": 800,
+      "height": 449,
+      "total_pixels": 359200,
+      "basic_score": 0.8026531127187853,
+      "file_name": "blog_header_0.jpg"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "一个简约的博客头部图片，黑白灰风格，简洁设计",
+    "image_info": {
+      "url": "https://i.etsystatic.com/17384640/r/il/67bc2c/5922585690/il_570xN.5922585690_too1.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 27596,
+      "width": 570,
+      "height": 331,
+      "total_pixels": 188670,
+      "basic_score": 0.741390328963048,
+      "file_name": "blog_header_2.jpg"
+    },
+    "llm_score": null
+  }
+]

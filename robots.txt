@@ -1,0 +1,29 @@
+# robots.txt - 搜索引擎爬虫配置
+
+User-agent: *
+Allow: /
+
+# 允许访问的重要页面
+Allow: /index.html
+Allow: /articles/
+Allow: /styles/
+Allow: /scripts/
+Allow: /imgs/
+
+# 禁止访问的目录
+Disallow: /browser/
+Disallow: /tmp/
+Disallow: /workspace.json
+
+# 网站地图（可选）
+# Sitemap: https://haowanai.cn/sitemap.xml
+
+# 爬虫延迟设置
+Crawl-delay: 1
+
+# 特殊爬虫配置
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

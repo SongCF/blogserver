@@ -1,0 +1,523 @@
+/* CSS 样式文件 - 黑白灰简约博客设计 */
+
+/* 基础重置和字体设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #141414;
+    background-color: #FFFFFF;
+}
+
+/* 间距系统 */
+.space-xs { margin: 8px; }
+.space-sm { margin: 16px; }
+.space-md { margin: 24px; }
+.space-lg { margin: 32px; }
+.space-xl { margin: 48px; }
+.space-xxl { margin: 64px; }
+
+/* 顶部导航栏 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DEE2E6;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+}
+
+.brand-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #141414;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 400;
+    color: #495057;
+    text-decoration: none;
+    transition: color 200ms linear;
+}
+
+.nav-link:hover {
+    color: #141414;
+}
+
+/* 移动端菜单按钮 */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.mobile-menu-btn span {
+    width: 20px;
+    height: 2px;
+    background-color: #141414;
+    transition: all 200ms ease;
+}
+
+/* 英雄区 */
+.hero {
+    width: 100%;
+    height: 400px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../imgs/blog_header_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 72px;
+}
+
+.hero-content {
+    max-width: 600px;
+    padding: 0 32px;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+}
+
+/* 主内容区 */
+.main-content {
+    padding: 64px 0;
+    min-height: calc(100vh - 472px);
+}
+
+.content-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.content-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #141414;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+/* 文章列表 */
+.articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.article-item {
+    padding: 32px;
+    border: 1px solid #DEE2E6;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    transition: border-color 200ms linear;
+    cursor: pointer;
+}
+
+.article-item:hover {
+    border-color: #141414;
+}
+
+.article-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #141414;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.article-time {
+    font-size: 14px;
+    font-weight: 400;
+    color: #495057;
+    line-height: 1.5;
+}
+
+/* 模态框 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 200ms ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    width: 400px;
+    background-color: #F8F9FA;
+    border-radius: 4px;
+    padding: 32px;
+    transform: scale(0.95);
+    transition: transform 250ms ease-out;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #141414;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #495057;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 200ms linear;
+}
+
+.modal-close:hover {
+    color: #141414;
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.modal-email {
+    font-size: 16px;
+    font-weight: 400;
+    color: #495057;
+}
+
+/* 移动端菜单 */
+.mobile-menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DEE2E6;
+    padding: 24px;
+    transform: translateY(-100%);
+    transition: transform 200ms ease;
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    transform: translateY(0);
+}
+
+.mobile-link {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: #495057;
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: 1px solid #DEE2E6;
+    transition: color 200ms linear;
+}
+
+.mobile-link:last-child {
+    border-bottom: none;
+}
+
+.mobile-link:hover {
+    color: #141414;
+}
+
+/* 移动端响应式设计 */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .hero {
+        height: 250px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .nav-container,
+    .content-container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    
+    .content-title {
+        font-size: 20px;
+        margin-bottom: 32px;
+    }
+    
+    .article-item {
+        padding: 24px;
+    }
+    
+    .article-title {
+        font-size: 20px;
+    }
+    
+    .main-content {
+        padding: 48px 0;
+    }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+    .nav-container,
+    .content-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .article-item {
+        padding: 20px;
+    }
+    
+    .hero-content {
+        padding: 0 24px;
+    }
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 选中文本样式 */
+::selection {
+    background-color: #141414;
+    color: #FFFFFF;
+}
+
+::-moz-selection {
+    background-color: #141414;
+    color: #FFFFFF;
+}
+
+/* 分类筛选样式 */
+.category-filter {
+    padding: 32px 0;
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #DEE2E6;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: 12px 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    cursor: pointer;
+    transition: all 200ms linear;
+    white-space: nowrap;
+}
+
+.filter-tab:hover {
+    border-color: #141414;
+    color: #141414;
+}
+
+.filter-tab.active {
+    background-color: #141414;
+    border-color: #141414;
+    color: #FFFFFF;
+}
+
+/* 加载状态样式 */
+.loading-spinner {
+    text-align: center;
+    padding: 64px 32px;
+    color: #495057;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #DEE2E6;
+    border-top: 3px solid #141414;
+    border-radius: 50%;
+    margin: 0 auto 16px auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* 无文章状态样式 */
+.no-articles {
+    text-align: center;
+    padding: 64px 32px;
+    color: #495057;
+}
+
+.no-articles p {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* 分类标签样式 */
+.article-item .category-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.article-item .category-tag.programming {
+    background-color: #141414;
+}
+
+.article-item .category-tag.reading {
+    background-color: #495057;
+}
+
+.article-item .category-tag.essay {
+    background-color: #6C757D;
+}
+
+.article-item .article-title {
+    display: block;
+    text-decoration: none;
+    color: #141414;
+}
+
+.article-item .article-title:hover {
+    color: #495057;
+}
+
+/* 移动端分类筛选优化 */
+@media (max-width: 768px) {
+    .category-filter {
+        padding: 24px 0;
+    }
+    
+    .filter-tabs {
+        gap: 12px;
+    }
+    
+    .filter-tab {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .loading-spinner,
+    .no-articles {
+        padding: 48px 24px;
+    }
+    
+    .loading-spinner p,
+    .no-articles p {
+        font-size: 16px;
+    }
+}
+
+/* 响应式文章网格 */
+@media (max-width: 768px) {
+    .articles-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}

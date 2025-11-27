@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>haowanai.cn - 个人博客</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="imgs/blog_icon_2.jpg" alt="博客图标" class="brand-icon">
+                <span class="brand-text">haowanai.cn</span>
+            </div>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="https://h5wan.haowanai.cn" target="_blank" class="nav-link">小游戏体验</a>
+                <a href="https://tools.haowanai.cn" target="_blank" class="nav-link">工具体验</a>
+                <a href="#" class="nav-link" id="contactBtn">联系我</a>
+            </div>
+            
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">探索、思考、分享</h1>
+            <p class="hero-subtitle">一个记录个人成长与发现的角落</p>
+        </div>
+    </section>
+
+    <!-- 文章分类筛选 -->
+    <section class="category-filter">
+        <div class="content-container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">全部文章</button>
+                <button class="filter-tab" data-category="programming">编程</button>
+                <button class="filter-tab" data-category="reading">读书</button>
+                <button class="filter-tab" data-category="essay">随笔</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章列表 -->
+    <main class="main-content">
+        <div class="content-container">
+            <h2 class="content-title">最新文章</h2>
+            
+            <!-- 加载状态 -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>正在加载文章...</p>
+            </div>
+            
+            <div class="articles-list" id="articlesList">
+                <!-- 文章将通过JavaScript动态加载 -->
+            </div>
+            
+            <!-- 无文章状态 -->
+            <div class="no-articles" id="noArticles" style="display: none;">
+                <p>该分类下暂无文章</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 联系我模态框 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">联系我</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p class="modal-email">821416394@qq.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 移动端菜单 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="https://h5wan.haowanai.cn" target="_blank" class="mobile-link">小游戏体验</a>
+        <a href="https://tools.haowanai.cn" target="_blank" class="mobile-link">工具体验</a>
+        <a href="#" class="mobile-link" id="mobileContactBtn">联系我</a>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

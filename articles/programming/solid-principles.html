@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优雅的代码设计：SOLID原则在现代软件开发中的应用 - haowanai.cn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/article.css">
+</head>
+<body>
+    <!-- 简单返回按钮 -->
+    <div class="article-return">
+        <a href="../index.html" class="return-btn">
+            <span class="return-icon">←</span>
+            返回主页
+        </a>
+    </div>
+
+    <!-- 文章内容 -->
+    <article class="article-content-simple">
+        <div class="article-header">
+            <div class="article-meta">
+                <span class="category category-programming">编程</span>
+                <time class="publish-date">2025年1月15日</time>
+            </div>
+            <h1 class="article-title">优雅的代码设计：SOLID原则在现代软件开发中的应用</h1>
+            <div class="article-summary">
+                深入探讨SOLID原则在现代软件开发中的实际应用，如何通过遵循这些原则来构建可维护、可扩展的软件架构。
+            </div>
+        </div>
+        
+        <div class="article-body">
+            <p>在软件开发的世界里，我们经常面临着代码复杂度过高、难以维护和扩展的问题。SOLID原则作为面向对象设计的基石，为我们提供了一套指导原则来构建优雅的代码。</p>
+
+            <h2>什么是SOLID原则？</h2>
+            <p>SOLID是五个面向对象设计原则的首字母缩写：</p>
+            <ul>
+                <li><strong>S - 单一职责原则 (Single Responsibility Principle)</strong></li>
+                <li><strong>O - 开闭原则 (Open-Closed Principle)</strong></li>
+                <li><strong>L - 里氏替换原则 (Liskov Substitution Principle)</strong></li>
+                <li><strong>I - 接口隔离原则 (Interface Segregation Principle)</strong></li>
+                <li><strong>D - 依赖反转原则 (Dependency Inversion Principle)</strong></li>
+            </ul>
+
+            <h2>实际应用案例</h2>
+            <p>让我们通过一个实际的项目示例来看看这些原则如何指导我们的代码设计。假设我们正在开发一个简单的订单管理系统：</p>
+
+            <pre><code>// 违反单一职责原则的代码示例
+class OrderProcessor {
+    validateOrder(order) { /* 验证逻辑 */ }
+    calculateTotal(order) { /* 计算总价 */ }
+    saveToDatabase(order) { /* 数据库操作 */ }
+    sendEmailConfirmation(order) { /* 发送邮件 */ }
+    updateInventory(order) { /* 库存管理 */ }
+}</code></pre>
+
+            <p>这个类承担了太多职责，违反了单一职责原则。我们应该将其重构为多个职责单一的类：</p>
+
+            <pre><code>// 遵循SOLID原则的重构版本
+class OrderValidator {
+    validate(order) { /* 验证逻辑 */ }
+}
+
+class OrderCalculator {
+    calculateTotal(order) { /* 计算总价 */ }
+}
+
+class OrderRepository {
+    save(order) { /* 数据库操作 */ }
+}
+
+class EmailService {
+    sendConfirmation(order) { /* 发送邮件 */ }
+}
+
+class InventoryService {
+    update(order) { /* 库存管理 */ }
+}
+
+class OrderProcessor {
+    constructor(validator, calculator, repository, emailService, inventoryService) {
+        this.validator = validator;
+        this.calculator = calculator;
+        this.repository = repository;
+        this.emailService = emailService;
+        this.inventoryService = inventoryService;
+    }
+    
+    processOrder(order) {
+        this.validator.validate(order);
+        this.calculator.calculateTotal(order);
+        this.repository.save(order);
+        this.emailService.sendConfirmation(order);
+        this.inventoryService.update(order);
+    }
+}</code></pre>
+
+            <h2>现代开发中的应用</h2>
+            <p>在现代开发框架中，SOLID原则得到了广泛的应用：</p>
+
+            <h3>React + TypeScript</h3>
+            <p>通过使用TypeScript的接口和类型系统，我们可以更好地实现接口隔离和依赖反转原则。</p>
+
+            <h3>Angular 的依赖注入</h3>
+            <p>Angular框架内置的依赖注入系统天然支持依赖反转原则。</p>
+
+            <h3>Vue.js 的组合式API</h3>
+            <p>Vue 3的组合式API使得代码更加模块化，遵循单一职责原则。</p>
+
+            <h2>总结</h2>
+            <p>SOLID原则不是教条，而是指导我们编写优雅代码的工具。在实际项目中，我们应该根据具体情况灵活应用这些原则，平衡设计复杂度和维护性。</p>
+
+            <p>记住，好的代码不仅要能工作，还要易于理解、维护和扩展。这就是SOLID原则教给我们的最重要的东西。</p>
+        </div>
+    </article>
+
+
+
+    <script src="../scripts/article.js"></script>
+</body>
+</html>
