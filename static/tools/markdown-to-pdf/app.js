@@ -101,14 +101,14 @@ function initMarked() {
 // ===== Update Preview =====
 function updatePreview() {
     const markdown = markdownInput.value;
-    const html = marked.parse(markdown);
     
-    // Process PDF page break markers
-    let processedHtml = html;
-    processedHtml = processedHtml.replace(/\[pdf-page-break\]/g, '<div class="pdf-page-break"></div>');
-    processedHtml = processedHtml.replace(/\*\*\*pdf\*\*\*/g, '<div class="pdf-page-break"></div>');
+    // Process PDF page break markers before marked parsing
+    let processedMarkdown = markdown;
+    processedMarkdown = processedMarkdown.replace(/\[pdf-page-break\]/g, '\n<div class="pdf-page-break"></div>\n');
+    processedMarkdown = processedMarkdown.replace(/\*\*\*pdf\*\*\*/g, '\n<div class="pdf-page-break"></div>\n');
     
-    pdfPreview.innerHTML = processedHtml;
+    const html = marked.parse(processedMarkdown);
+    pdfPreview.innerHTML = html;
     
     // Apply syntax highlighting to code blocks
     pdfPreview.querySelectorAll('pre code').forEach((block) => {
@@ -142,6 +142,33 @@ async function generatePDF() {
         // Wait for rendering to complete
         await new Promise(resolve => setTimeout(resolve, 100));
         
+        // Generate PDF with manual page break handling
+        const element = pdfPreview;
+        
+        // Create a temporary clone of the element for PDF generation
+        const pdfElement = element.cloneNode(true);
+        
+        // Remove all PDF page break marker visual elements
+        const pageBreaks = pdfElement.querySelectorAll('.pdf-page-break');
+        pageBreaks.forEach(breakElement => {
+            // Remove visual styles
+            breakElement.style.border = 'none';
+            breakElement.style.position = 'static';
+            breakElement.style.height = '1px';
+            breakElement.style.overflow = 'hidden';
+            breakElement.style.margin = '20px 0';
+            breakElement.style.clear = 'both';
+            breakElement.style.pageBreakBefore = 'always';
+            
+            // Remove any pseudo-elements
+            breakElement.style.setProperty('--before-content', 'none');
+            
+            // Remove any child elements that might be causing issues
+            while (breakElement.firstChild) {
+                breakElement.removeChild(breakElement.firstChild);
+            }
+        });
+        
         // Configure PDF options
         const opt = {
             margin: [10, 10, 10, 10],
@@ -161,11 +188,16 @@ async function generatePDF() {
                 unit: 'mm',
                 format: 'a4',
                 orientation: 'portrait'
+            },
+            // Add page break options
+            pagebreak: {
+                mode: ['avoid-all', 'css'],
+                before: '.pdf-page-break'
             }
         };
         
-        // Generate PDF
-        await html2pdf().set(opt).from(pdfPreview).save();
+        // Generate PDF from the cleaned element
+        await html2pdf().set(opt).from(pdfElement).save();
         
         // Show success feedback
         showNotification('PDF 生成成功！', 'success');

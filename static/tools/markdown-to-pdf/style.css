@@ -675,11 +675,29 @@ body {
     }
     
     /* PDF page break marker */
+    .markdown-body .pdf-page-break,
     .pdf-page-break {
-        page-break-before: always;
+        page-break-before: always !important;
+        page-break-inside: avoid !important;
         height: 1px;
         overflow: hidden;
         margin: 10px 0;
+        clear: both;
+        border: none !important;
+        position: static !important;
+    }
+    
+    /* Hide PDF page break marker text in print */
+    .markdown-body .pdf-page-break::before,
+    .pdf-page-break::before {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Ensure page break marker is not affected by parent elements */
+    .markdown-body *:has(> .pdf-page-break) {
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
     }
     
     /* Ensure first page doesn't have extra margin */
