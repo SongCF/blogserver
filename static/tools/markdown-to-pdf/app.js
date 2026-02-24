@@ -102,7 +102,13 @@ function initMarked() {
 function updatePreview() {
     const markdown = markdownInput.value;
     const html = marked.parse(markdown);
-    pdfPreview.innerHTML = html;
+    
+    // Process PDF page break markers
+    let processedHtml = html;
+    processedHtml = processedHtml.replace(/\[pdf-page-break\]/g, '<div class="pdf-page-break"></div>');
+    processedHtml = processedHtml.replace(/\*\*\*pdf\*\*\*/g, '<div class="pdf-page-break"></div>');
+    
+    pdfPreview.innerHTML = processedHtml;
     
     // Apply syntax highlighting to code blocks
     pdfPreview.querySelectorAll('pre code').forEach((block) => {
