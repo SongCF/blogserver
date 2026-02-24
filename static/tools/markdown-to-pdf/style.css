@@ -681,7 +681,7 @@ body {
         page-break-inside: avoid !important;
         height: 0;
         overflow: hidden;
-        margin: 0;
+        margin: 0 0 10mm 0;
         padding: 0;
         clear: both;
         border: none !important;
@@ -702,13 +702,13 @@ body {
         page-break-after: avoid !important;
     }
     
-    /* Ensure first page doesn't have extra margin */
+    /* Ensure first page has proper margin */
     .markdown-body :first-child {
         page-break-before: avoid;
-        margin-top: 0 !important;
+        margin-top: 10mm !important;
     }
     
-    /* Remove extra margins from headings near page breaks */
+    /* Add proper margins to headings */
     .markdown-body h1,
     .markdown-body h2,
     .markdown-body h3,
@@ -719,15 +719,26 @@ body {
         margin-bottom: 12px !important;
     }
     
+    /* Allow list items to break across pages */
+    .markdown-body ul,
+    .markdown-body ol {
+        page-break-inside: auto !important;
+    }
+    
+    .markdown-body li {
+        page-break-inside: auto !important;
+        page-break-after: auto !important;
+    }
+    
     /* Add spacing between pages */
     @page {
-        margin: 0;
+        margin: 10mm;
         size: A4 portrait;
     }
     
-    /* Reduce spacing for PDF preview */
+    /* Add proper padding for PDF preview */
     .pdf-preview {
-        padding: 0;
+        padding: 10mm;
         margin: 0;
     }
 }

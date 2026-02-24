@@ -172,18 +172,11 @@ async function generatePDF() {
             }
         });
         
-        // Remove extra margins from the entire document
-        const allElements = pdfElement.querySelectorAll('*');
-        allElements.forEach(el => {
-            if (el.tagName !== 'HTML' && el.tagName !== 'BODY') {
-                el.style.marginTop = el.style.marginTop.replace('24px', '12px');
-                el.style.marginBottom = el.style.marginBottom.replace('16px', '8px');
-            }
-        });
+        // No need to remove margins - using CSS for proper spacing now
         
-        // Configure PDF options with minimal margins
+        // Configure PDF options with proper margins
         const opt = {
-            margin: [0, 0, 0, 0],
+            margin: [10, 10, 10, 10],
             filename: `markdown-document-${new Date().toISOString().slice(0, 10)}.pdf`,
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
@@ -194,10 +187,7 @@ async function generatePDF() {
                 scrollX: 0,
                 scrollY: 0,
                 windowWidth: document.documentElement.clientWidth,
-                windowHeight: document.documentElement.clientHeight,
-                // Add these options to reduce padding
-                removeContainer: true,
-                backgroundColor: '#ffffff'
+                windowHeight: document.documentElement.clientHeight
             },
             jsPDF: {
                 unit: 'mm',
@@ -206,7 +196,7 @@ async function generatePDF() {
             },
             // Add page break options
             pagebreak: {
-                mode: ['avoid-all', 'css'],
+                mode: ['css'],
                 before: '.pdf-page-break'
             }
         };
