@@ -138,14 +138,18 @@ async function generatePDF() {
         
         // Configure PDF options
         const opt = {
-            margin: [15, 15, 15, 15],
+            margin: [10, 10, 10, 10],
             filename: `markdown-document-${new Date().toISOString().slice(0, 10)}.pdf`,
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
                 scale: 2,
                 useCORS: true,
                 logging: false,
-                backgroundColor: '#ffffff'
+                backgroundColor: '#ffffff',
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.clientWidth,
+                windowHeight: document.documentElement.clientHeight
             },
             jsPDF: {
                 unit: 'mm',

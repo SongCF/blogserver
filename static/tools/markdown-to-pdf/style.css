@@ -639,6 +639,51 @@ body {
     .pdf-preview {
         box-shadow: none;
     }
+    
+    /* Page break and content protection styles */
+    * {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        page-break-before: avoid;
+    }
+    
+    /* Allow page breaks after certain elements */
+    p,
+    ul,
+    ol,
+    blockquote,
+    table,
+    pre {
+        page-break-inside: auto;
+    }
+    
+    /* Add page spacing */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .pdf-preview {
+        padding: 20mm;
+        margin: 0;
+    }
+    
+    /* Page break before h1 */
+    .markdown-body h1 {
+        page-break-before: always;
+        margin-top: 0;
+    }
+    
+    /* Ensure first page doesn't have extra margin */
+    .markdown-body :first-child {
+        page-break-before: avoid;
+    }
+    
+    /* Add spacing between pages */
+    @page {
+        margin: 10mm;
+        size: A4 portrait;
+    }
 }
 
 /* ===== Loading State ===== */
