@@ -719,15 +719,32 @@ body {
         margin-bottom: 12px !important;
     }
     
-    /* Allow list items to break across pages */
+    /* Allow list items to break across pages but prevent line cutting */
     .markdown-body ul,
     .markdown-body ol {
         page-break-inside: auto !important;
     }
     
     .markdown-body li {
-        page-break-inside: auto !important;
+        page-break-inside: avoid !important;
         page-break-after: auto !important;
+    }
+    
+    /* Prevent line cutting in paragraphs and other text elements */
+    .markdown-body p,
+    .markdown-body blockquote,
+    .markdown-body div {
+        page-break-inside: avoid !important;
+    }
+    
+    /* Allow table cells to break but not cut lines */
+    .markdown-body table {
+        page-break-inside: avoid !important;
+    }
+    
+    .markdown-body table td,
+    .markdown-body table th {
+        page-break-inside: avoid !important;
     }
     
     /* Add spacing between pages */
