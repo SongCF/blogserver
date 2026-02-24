@@ -172,7 +172,29 @@ async function generatePDF() {
             }
         });
         
-        // No need to remove margins - using CSS for proper spacing now
+        // Apply inline styles to prevent text cutting
+        const allElements = pdfElement.querySelectorAll('*');
+        allElements.forEach(el => {
+            const currentStyle = window.getComputedStyle(el);
+            
+            // Apply break-inside: avoid to all elements
+            el.style.setProperty('page-break-inside', 'avoid', 'important');
+            el.style.setProperty('break-inside', 'avoid', 'important');
+            el.style.setProperty('-webkit-column-break-inside', 'avoid', 'important');
+            
+            // For list containers, allow breaking
+            if (el.tagName === 'UL' || el.tagName === 'OL' || el.tagName === 'DL') {
+                el.style.setProperty('page-break-inside', 'auto', 'important');
+                el.style.setProperty('break-inside', 'auto', 'important');
+            }
+            
+            // For list items, ensure they don't break
+            if (el.tagName === 'LI') {
+                el.style.setProperty('page-break-inside', 'avoid', 'important');
+                el.style.setProperty('break-inside', 'avoid', 'important');
+                el.style.setProperty('page-break-after', 'auto', 'important');
+            }
+        });
         
         // Configure PDF options with proper margins
         const opt = {
@@ -194,10 +216,12 @@ async function generatePDF() {
                 format: 'a4',
                 orientation: 'portrait'
             },
-            // Add page break options
+            // Add page break options with strict control
             pagebreak: {
-                mode: ['css'],
-                before: '.pdf-page-break'
+                mode: ['avoid-all', 'css'],
+                before: '.pdf-page-break',
+                after: '.pdf-page-break-after',
+                avoid: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'blockquote', 'pre', 'table', 'tr', 'td', 'th', 'img']
             }
         };
         
