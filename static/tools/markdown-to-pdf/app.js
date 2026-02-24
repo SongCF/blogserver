@@ -175,24 +175,27 @@ async function generatePDF() {
         // Apply inline styles to prevent text cutting
         const allElements = pdfElement.querySelectorAll('*');
         allElements.forEach(el => {
-            const currentStyle = window.getComputedStyle(el);
+            // Default: allow elements to break
+            el.style.setProperty('page-break-inside', 'auto', 'important');
+            el.style.setProperty('break-inside', 'auto', 'important');
             
-            // Apply break-inside: avoid to all elements
-            el.style.setProperty('page-break-inside', 'avoid', 'important');
-            el.style.setProperty('break-inside', 'avoid', 'important');
-            el.style.setProperty('-webkit-column-break-inside', 'avoid', 'important');
-            
-            // For list containers, allow breaking
-            if (el.tagName === 'UL' || el.tagName === 'OL' || el.tagName === 'DL') {
-                el.style.setProperty('page-break-inside', 'auto', 'important');
-                el.style.setProperty('break-inside', 'auto', 'important');
+            // For headings, prevent breaking
+            if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(el.tagName)) {
+                el.style.setProperty('page-break-inside', 'avoid', 'important');
+                el.style.setProperty('break-inside', 'avoid', 'important');
             }
             
-            // For list items, ensure they don't break
+            // For list items, prevent breaking
             if (el.tagName === 'LI') {
                 el.style.setProperty('page-break-inside', 'avoid', 'important');
                 el.style.setProperty('break-inside', 'avoid', 'important');
                 el.style.setProperty('page-break-after', 'auto', 'important');
+            }
+            
+            // For images and table cells, prevent breaking
+            if (el.tagName === 'IMG' || el.tagName === 'TD' || el.tagName === 'TH') {
+                el.style.setProperty('page-break-inside', 'avoid', 'important');
+                el.style.setProperty('break-inside', 'avoid', 'important');
             }
         });
         
@@ -221,7 +224,7 @@ async function generatePDF() {
                 mode: ['avoid-all', 'css'],
                 before: '.pdf-page-break',
                 after: '.pdf-page-break-after',
-                avoid: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'blockquote', 'pre', 'table', 'tr', 'td', 'th', 'img']
+                avoid: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'img', 'tr', 'td', 'th']
             }
         };
         

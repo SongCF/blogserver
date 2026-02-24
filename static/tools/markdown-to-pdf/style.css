@@ -730,16 +730,14 @@ body {
         page-break-after: auto !important;
     }
     
-    /* Prevent line cutting in ALL text elements */
+    /* Allow paragraphs and blockquotes to break across pages */
     .markdown-body p,
-    .markdown-body blockquote,
-    .markdown-body div,
-    .markdown-body span,
-    .markdown-body strong,
-    .markdown-body em,
-    .markdown-body code,
-    .markdown-body pre,
-    .markdown-body a,
+    .markdown-body blockquote {
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+    }
+    
+    /* Prevent headings from breaking */
     .markdown-body h1,
     .markdown-body h2,
     .markdown-body h3,
@@ -748,13 +746,19 @@ body {
     .markdown-body h6 {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
-        -webkit-column-break-inside: avoid !important;
+    }
+    
+    /* Allow code blocks to break if needed */
+    .markdown-body pre,
+    .markdown-body code {
+        page-break-inside: auto !important;
+        break-inside: auto !important;
     }
     
     /* Allow table cells to break but not cut lines */
     .markdown-body table {
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
     }
     
     .markdown-body table td,
@@ -763,14 +767,28 @@ body {
         break-inside: avoid !important;
     }
     
-    /* Add general break prevention for all elements */
+    /* General rule: allow most elements to break */
     .markdown-body * {
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-        -webkit-column-break-inside: avoid !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
     }
     
-    /* Exceptions - allow these elements to break */
+    /* Exceptions - prevent these specific elements from breaking */
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4,
+    .markdown-body h5,
+    .markdown-body h6,
+    .markdown-body li,
+    .markdown-body img,
+    .markdown-body table td,
+    .markdown-body table th {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+    
+    /* Allow list containers to break */
     .markdown-body ul,
     .markdown-body ol,
     .markdown-body dl {
