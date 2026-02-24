@@ -142,7 +142,7 @@ async function generatePDF() {
         // Wait for rendering to complete
         await new Promise(resolve => setTimeout(resolve, 100));
         
-        // Generate PDF with manual page break handling
+        // Generate PDF with optimized page layout
         const element = pdfPreview;
         
         // Create a temporary clone of the element for PDF generation
@@ -151,27 +151,39 @@ async function generatePDF() {
         // Remove all PDF page break marker visual elements
         const pageBreaks = pdfElement.querySelectorAll('.pdf-page-break');
         pageBreaks.forEach(breakElement => {
-            // Remove visual styles
-            breakElement.style.border = 'none';
-            breakElement.style.position = 'static';
-            breakElement.style.height = '1px';
-            breakElement.style.overflow = 'hidden';
-            breakElement.style.margin = '20px 0';
-            breakElement.style.clear = 'both';
-            breakElement.style.pageBreakBefore = 'always';
+            // Set minimal styles for page break
+            breakElement.style.cssText = `
+                page-break-before: always !important;
+                page-break-inside: avoid !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                clear: both !important;
+                border: none !important;
+                position: static !important;
+                line-height: 0 !important;
+                font-size: 0 !important;
+            `;
             
-            // Remove any pseudo-elements
-            breakElement.style.setProperty('--before-content', 'none');
-            
-            // Remove any child elements that might be causing issues
+            // Remove any child elements
             while (breakElement.firstChild) {
                 breakElement.removeChild(breakElement.firstChild);
             }
         });
         
-        // Configure PDF options
+        // Remove extra margins from the entire document
+        const allElements = pdfElement.querySelectorAll('*');
+        allElements.forEach(el => {
+            if (el.tagName !== 'HTML' && el.tagName !== 'BODY') {
+                el.style.marginTop = el.style.marginTop.replace('24px', '12px');
+                el.style.marginBottom = el.style.marginBottom.replace('16px', '8px');
+            }
+        });
+        
+        // Configure PDF options with minimal margins
         const opt = {
-            margin: [10, 10, 10, 10],
+            margin: [0, 0, 0, 0],
             filename: `markdown-document-${new Date().toISOString().slice(0, 10)}.pdf`,
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
@@ -182,7 +194,10 @@ async function generatePDF() {
                 scrollX: 0,
                 scrollY: 0,
                 windowWidth: document.documentElement.clientWidth,
-                windowHeight: document.documentElement.clientHeight
+                windowHeight: document.documentElement.clientHeight,
+                // Add these options to reduce padding
+                removeContainer: true,
+                backgroundColor: '#ffffff'
             },
             jsPDF: {
                 unit: 'mm',
